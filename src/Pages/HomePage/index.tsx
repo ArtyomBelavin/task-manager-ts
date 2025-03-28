@@ -43,7 +43,16 @@ export const HomePage: React.FC = () => {
           </h2>
           <ul className={styles.List}>
             {tasks.map((task) => (
-              <li key={task.id} className={styles.ListItem}>
+              <li
+                key={task.id}
+                className={
+                  task.status === "Done"
+                    ? styles.ListItemGreen
+                    : styles.ListItem && task.status === "InProcess"
+                    ? styles.ListItemYellow
+                    : styles.ListItem
+                }
+              >
                 <div className={styles.ListItemContainer}>
                   <h3 className={styles.ListItemTitle}>
                     Название задачи: <br />
